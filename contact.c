@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "contact.h"
-#include "populate.c"
-
 void listContacts(AddressBook *addressBook)
 {
 	if(addressBook->contactCount == 0) {
@@ -29,15 +27,14 @@ void createContact(AddressBook *addressBook)
     Contact newContact;
     printf("Enter name: ");
     fgets(newContact.name, sizeof(newContact.name), stdin);
-    newContact.name[strcspn(newContact.name, "\n")] = '\0'; // Remove newline
+    newContact.name[strcspn(newContact.name, "\n")] = '\0'; 
 
     printf("Enter phone: ");
     fgets(newContact.phone, sizeof(newContact.phone), stdin);
-    newContact.phone[strcspn(newContact.phone, "\n")] = '\0'; // Remove newline
-
+    newContact.phone[strcspn(newContact.phone, "\n")] = '\0'; 
     printf("Enter email: ");
     fgets(newContact.email, sizeof(newContact.email), stdin);
-    newContact.email[strcspn(newContact.email, "\n")] = '\0'; // Remove newline
+    newContact.email[strcspn(newContact.email, "\n")] = '\0'; 
 
     addressBook->contacts[addressBook->contactCount++] = newContact;
 }
@@ -47,7 +44,7 @@ void searchContact(AddressBook *addressBook)
     char searchName[50];
     printf("Enter name to search: ");
     fgets(searchName, sizeof(searchName), stdin);
-    searchName[strcspn(searchName, "\n")] = '\0'; // Remove newline
+    searchName[strcspn(searchName, "\n")] = '\0'; 
 
     int found = 0;
     for(int i=0; i<addressBook->contactCount; ++i) {
@@ -70,7 +67,7 @@ void editContact(AddressBook *addressBook)
     char searchName[50];
     printf("Enter name of contact to edit: ");
     fgets(searchName, sizeof(searchName), stdin);
-    searchName[strcspn(searchName, "\n")] = '\0'; // Remove newline
+    searchName[strcspn(searchName, "\n")] = '\0'; 
 
     int found = 0;
     for(int i=0; i<addressBook->contactCount; ++i) {
@@ -93,7 +90,7 @@ void deleteContact(AddressBook *addressBook)
     char searchName[50];
     printf("Enter name of contact to delete: ");
     fgets(searchName, sizeof(searchName), stdin);
-    searchName[strcspn(searchName, "\n")] = '\0'; // Remove newline
+    searchName[strcspn(searchName, "\n")] = '\0'; 
 
     int found = 0;
     for(int i=0; i<addressBook->contactCount; ++i) {
